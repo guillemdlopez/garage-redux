@@ -1,4 +1,72 @@
-.app {
-  margin-top: 20px;
-  margin-bottom: 20px;
+.app-wrapper {
+  display: flex;
+  height: 85vh;
+  margin-top: 5%;
+  box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+}
+
+.current-garage {
+  width: 25vw;
+  position: relative;
+  text-align: center;
+}
+
+.cars-list {
+  width: 75vw;
+  background: #dbdbdb;
+  border-radius: 0px 4;
+  padding: 10px;
+}
+
+.background-image {
+  filter: grayscale(1);
+  opacity: 0.4;
+  background-image: url("https://hipertextual.com/files/2020/09/hipertextual-mercedes-benz-muestra-su-prototipo-futurista-accion-2020024761-740x490.jpg");
+  height: 200px;
+  background-position: center;
+  background-size: inherit;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.logo-img {
+  width: 85px;
+  position: absolute;
+  top: 154px;
+  left: 36%;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+.add-car-link {
+  border: 1px solid black;
+  padding: 14px;
+  display: block;
+  margin: 0 auto;
+  font-size: 16px;
+  border-radius: 4px;
+  color: black;
+  font-weight: bold;
+}
+
+.add-car-link:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.garage-description {
+  text-align: left;
+  color: gray;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.current-garage-info {
+  padding: 20px;
+}
+
+.car-card {
+  margin-bottom: 10px;
+  background: white;
+  padding: 10px;
+  width: 100%;
 }
