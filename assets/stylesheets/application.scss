@@ -12,7 +12,8 @@
   text-align: center;
 }
 
-.cars-list {
+.cars-list,
+.show-page {
   width: 75vw;
   background: #dbdbdb;
   border-radius: 0px 4px 4px 0px;
@@ -76,22 +77,29 @@
   padding: 20px;
 }
 
-.car-card {
+.car-card,
+.car-card-show {
   margin-bottom: 10px;
   background: white;
   width: 100%;
-  height: 100px;
+  height: 110px;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  text-decoration: none;
+  color: black;
 
   p:last-child {
     margin: 0;
   }
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .car-card-content {
   padding: 10px;
+  margin-left: 10px;
 }
 
 .car-brand-model,
@@ -128,4 +136,34 @@ input {
   opacity: 1;
   padding: 10px;
   border-radius: 0px;
+}
+
+// SHOW PAGE //
+
+.car-card-show {
+  height: 200px;
+  position: relative;
+
+  .car-card-content {
+    font-size: 16px;
+  }
+}
+
+.plate {
+  margin: 0;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px 24px;
+  font-weight: bold;
+}
+
+.btn-delete {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  font-weight: bold;
+  background: #fd1015;
+  color: white;
+  padding: 10px 24px;
+  cursor: pointer;
 }

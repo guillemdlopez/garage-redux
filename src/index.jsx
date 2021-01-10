@@ -16,6 +16,7 @@ import carsReducer from "./reducers/cars_reducer.js";
 // Components
 import CarsIndex from "./containers/cars_index.js";
 import CarsNew from "./containers/cars_new.js";
+import CarsShow from "./containers/cars_show.js";
 
 const initialState = {
   garage:
@@ -39,6 +40,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact component={CarsIndex} />
         <Route path="/cars/new" component={CarsNew} />
+        <Route path="/cars/:id" exact component={CarsShow} />
       </Switch>
     </Router>
   </Provider>,

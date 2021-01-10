@@ -4,6 +4,8 @@ import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
 export const src =
   "https://lewagon.github.io/chat-redux/assets/images/logo.svg";
+export const cardImage =
+  "https://media-exp1.licdn.com/dms/image/C560BAQFlSIIgaxHSlg/company-logo_200_200/0/1593706425420?e=2159024400&v=beta&t=ZTzq5hY5T4LN8MwCPH751e-gnnibHdzMI7JDN1W9rxQ";
 
 // Actions
 import { fetchCars } from "../actions";
@@ -14,21 +16,20 @@ class CarsIndex extends Component {
   }
 
   renderCars = (car) => {
-    const src =
-      "https://media-exp1.licdn.com/dms/image/C560BAQFlSIIgaxHSlg/company-logo_200_200/0/1593706425420?e=2159024400&v=beta&t=ZTzq5hY5T4LN8MwCPH751e-gnnibHdzMI7JDN1W9rxQ";
-
     return (
-      <div key={car.id} className="car-card">
-        <img src={src} style={{ width: "100px" }} />
-        <div className="car-card-content">
-          <p className="car-brand-model">
-            {car.brand.toUpperCase()} - {car.model.toUpperCase()}
-          </p>
-          <p>
-            <scan className="car-owner">Owner:</scan> {car.owner}
-          </p>
+      <Link to={`/cars/${car.id}`} key={car.id}>
+        <div className="car-card">
+          <img src={cardImage} style={{ width: "110px" }} />
+          <div className="car-card-content">
+            <p className="car-brand-model">
+              {car.brand.toUpperCase()} - {car.model.toUpperCase()}
+            </p>
+            <p>
+              <scan className="car-owner">Owner:</scan> {car.owner}
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
     );
   };
 
