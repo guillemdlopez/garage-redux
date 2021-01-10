@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
 // Images
-import { src } from "./cars_index";
-import { cardImage } from "./cars_index";
+import { src, cardImage } from "./cars_index";
 
 // Action
 import { deleteCar, fetchCar } from "../actions/index";
