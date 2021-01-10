@@ -1,12 +1,30 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
+// Images
 import { src } from "./cars_index";
 import { cardImage } from "./cars_index";
 
+// Action
+import { deleteCar, fetchCar } from "../actions/index";
+
 class CarsShow extends Component {
+  componentWillMount() {
+    if (!this.props.car) {
+      this.props.fetchCar(this.props.match.params.id);
+    }
+  }
+
+  handleClick = () => {
+    this.props.deleteCar(this.props.car, () => {
+      this.props.history.push("");
+    });
+  };
+
   render() {
+    const car = this.props.car;
     return (
       <div className="app-wrapper">
         <div className="current-garage">
@@ -30,15 +48,18 @@ class CarsShow extends Component {
             <img src={cardImage} style={{ width: "200px" }} />
             <div className="car-card-content">
               <p className="car-brand-model">
-                {this.props.car.brand.toUpperCase()} -{" "}
-                {this.props.car.model.toUpperCase()}
+                {car.brand.toUpperCase()} - {car.model.toUpperCase()}
               </p>
               <p>
-                <scan className="car-owner">Owner:</scan> {this.props.car.owner}
+                <scan className="car-owner">Owner:</scan>{" "}
+                {car.owner[0].toUpperCase() +
+                  car.owner.substring(1).toLowerCase()}
               </p>
-              <p className="plate">{this.props.car.plate}</p>
+              <p className="plate">{car.plate.toUpperCase()}</p>
             </div>
-            <p className="btn-delete">Delete</p>
+            <p className="btn-delete" onClick={this.handleClick}>
+              Delete
+            </p>
           </div>
         </div>
       </div>
@@ -47,9 +68,15 @@ class CarsShow extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const id = parseInt(ownProps.match.params.id, 10);
+  const id = parseInt(ownProps.match.params.id);
   const car = state.cars.find((c) => c.id == id);
   return { car, garage: state.garage };
 }
 
-export default connect(mapStateToProps)(CarsShow);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ deleteCar, fetchCar }, dispatch);
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CarsShow)
+);

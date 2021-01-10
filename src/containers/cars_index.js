@@ -25,7 +25,9 @@ class CarsIndex extends Component {
               {car.brand.toUpperCase()} - {car.model.toUpperCase()}
             </p>
             <p>
-              <scan className="car-owner">Owner:</scan> {car.owner}
+              <scan className="car-owner">Owner:</scan>{" "}
+              {car.owner[0].toUpperCase() +
+                car.owner.substring(1).toLowerCase()}
             </p>
           </div>
         </div>
@@ -53,7 +55,11 @@ class CarsIndex extends Component {
           </div>
         </div>
         <div className="cars-list" style={{ height: "100%" }}>
-          {this.props.cars.map((car) => this.renderCars(car))}
+          {this.props.cars.length === 0 ? (
+            <p className="no-cars-message">No cars yet...</p>
+          ) : (
+            this.props.cars.map((car) => this.renderCars(car))
+          )}
         </div>
       </div>
     );
