@@ -19,7 +19,7 @@ import CarsNew from "./containers/cars_new.js";
 
 const initialState = {
   garage:
-    prompt("What is your garage name?") ||
+    `Garage ${prompt("What is your garage name?")}` ||
     `garage${Math.floor(10 + Math.random() * 90)}`,
   cars: [],
 };

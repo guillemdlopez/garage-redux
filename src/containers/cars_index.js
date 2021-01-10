@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { Link } from "react-router-dom";
+export const src =
+  "https://lewagon.github.io/chat-redux/assets/images/logo.svg";
 
 // Actions
 import { fetchCars } from "../actions";
@@ -12,18 +14,25 @@ class CarsIndex extends Component {
   }
 
   renderCars = (car) => {
+    const src =
+      "https://media-exp1.licdn.com/dms/image/C560BAQFlSIIgaxHSlg/company-logo_200_200/0/1593706425420?e=2159024400&v=beta&t=ZTzq5hY5T4LN8MwCPH751e-gnnibHdzMI7JDN1W9rxQ";
+
     return (
       <div key={car.id} className="car-card">
-        <p>
-          {car.brand.toUpperCase()} - {car.model.toUpperCase()}
-        </p>
-        <p>Owner: {car.owner}</p>
+        <img src={src} style={{ width: "100px" }} />
+        <div className="car-card-content">
+          <p className="car-brand-model">
+            {car.brand.toUpperCase()} - {car.model.toUpperCase()}
+          </p>
+          <p>
+            <scan className="car-owner">Owner:</scan> {car.owner}
+          </p>
+        </div>
       </div>
     );
   };
 
   render() {
-    const src = "https://lewagon.github.io/chat-redux/assets/images/logo.svg";
     return (
       <div className="app-wrapper">
         <div className="current-garage">
@@ -37,15 +46,13 @@ class CarsIndex extends Component {
               Our garage is the best. Reasonable prices, always on time, we are
               the best (and fictionnal).
             </p>
-            <Link to="/cars/new" className="add-car-link">
+            <Link to="/cars/new" className="navigation-link">
               Add a car
             </Link>
           </div>
         </div>
         <div className="cars-list" style={{ height: "100%" }}>
-          {this.props.cars.map((car) => {
-            return this.renderCars(car);
-          })}
+          {this.props.cars.map((car) => this.renderCars(car))}
         </div>
       </div>
     );
